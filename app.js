@@ -11,3 +11,7 @@ Array.from(forms).forEach(form => {
       form.classList.add('was-validated')
     }, false)
   });
+
+  function submitForm(){
+    alert('Form Submitted');
+  }

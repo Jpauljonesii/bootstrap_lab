@@ -80,19 +80,19 @@
               <h1>
                 Contact Us
             </h1>
-<form class="row g-3 needs-validation" novalidate>
+<form class="row g-3 needs-validation" novalidate onsubmit="submitForm()">
   <div class="row">
 
     <div class="col-md-6">
       <label for="validationCustom01" class="form-label">First name</label>
-      <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+      <input type="text" class="form-control" id="validationCustom01" value="" required>
       <div class="valid-feedback">
         Looks good!
       </div>
     </div>
     <div class="col-md-6">
       <label for="validationCustom02" class="form-label">Last name</label>
-      <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
+      <input type="text" class="form-control" id="validationCustom02" value="" required>
       <div class="valid-feedback">
         Looks good!
       </div>
@@ -101,20 +101,29 @@
 
       <div class="col-md-6">
         <label for="validationCustom03" class="form-label">Phone Number</label>
-        <input type="tel" class="form-control" id="validationCustom03" value="Mark" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+        <input type="tel" class="form-control" id="validationCustom03" value=""  required>
         <div class="valid-feedback">
           Looks good!
         </div>
       </div>
       <div class="col-md-6">
         <label for="validationCustom04" class="form-label">Email Address</label>
-        <input type="email" class="form-control" id="validationCustom04" value="Otto" required>
+        <input type="email" class="form-control" id="validationCustom04" value="" required>
         <div class="valid-feedback">
           Looks good!
         </div>
       </div>
+      <div class="row">
+        <label for="Textarea" class="form-label">Questions/Comments</label>
+       <textarea name="message" rows="5" cols="50">
+
+        </textarea> 
+        
+      </div>
+      <div>
 
       <button type="submit" class="btn btn-dark btn-sm">Submit</button>
+    </div>
     </form>
    </main>
  
