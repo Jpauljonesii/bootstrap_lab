@@ -15,9 +15,16 @@ Array.from(forms).forEach(form => {
   function submitForm(){
     alert('Form Submitted');
   }
+/*
+const timeElms = {
+  days: document.getElementById("days"),
+  hours: document.getElementById("hours"),
+  minutes: document.getElementById("minutes"), 
+  seconds: document.getElementById("seconds"),
+};
 
 const countdownTimer = {
-  targetDate: new Date("Oct 28, 2023 12:00:00").getTime(),
+  targetDate: new Date("2023-10-28T12:00:00").getTime(),
   interval: null, 
   days: 0, 
   hours: 0, 
@@ -33,12 +40,12 @@ const countdownTimer = {
         clearInterval(this.interval);
         console.log("Countdown has ended");
       } else {
-        this.days = Math.round(timeDiff / (1000 * 60 * 60 * 24));
-        this.hours = Math.round(
-          (timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        this.days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+        this.hours = Math.floor(
+          (timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
         );
-        this.minutes = Math.round((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-        this.seconds = Math.round((timeDiff % (1000 * 60)) / 1000);
+        this.minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        this.seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
         
         this.render();
       }
@@ -47,45 +54,59 @@ const countdownTimer = {
     1000);
   },
 
+  stop: function () {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
+  },
+
   render: function (){
-    this.interval = setInterval(() => {
-      const now = new Date().getTime();
-      const timeRemaining = this.target - now;
+    timeElms.days.textContent = this.days;
+    timeElms.hours.textContent = this.hours;
+    timeElms.minutes.textContent = this.minutes;
+    timeElms.seconds.textContent = this.seconds;
+  },
+};
 
-      if (timeRemaining <= 0) {
-        clearInterval(this.interval);
-        console.log("Countdown has ended");
-      } else {
-        this.days = Math.round(timeDiff / (1000 * 60 * 60 * 24));
-        this.hours = Math.round(
-          (timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        this.minutes = Math.round((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-        this.seconds = Math.round((timeDiff % (1000 * 60)) / 1000);
-        
-        this.render();
-      }
-    },
-
-    1000);
-}
-}
-
-
-
-/*const eventDate = new Date("Oct 28, 2023 12:00:00").getTime();
-
-const today = new Date();
-
-const timeDiff = eventDate - today;
-
-const days = Math.round( timeDiff / (1000 * 60 * 60 * 24))
-const hours = Math.round ( timeDiff % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))
-const minutes = Math.round (timeDiff % (1000 * 60 * 60) / (1000 * 60))
-const seconds = Math.round ( timeDiff % (1000 * 60) / 1000)
-
-console.log(days, hours, minutes, seconds);
+countdownTimer.start();
 */
+
+    
+
+
+
+const seminarObject = {
+  eventName: "Medicare Seminar",
+  eventDate: new Date("Oct 28, 2023 12:00:00").getTime(),
+
+  timerCountDown: function (){
+    const now = new Date().getTime();
+    const distance = this.eventDate - now;
+
+    if (distance < 0) {
+    clearInterval(this.setTimer);
+    document.getElementById("timer").innerHTML = "Event has started";
+    return;
+  }
+  const days = Math.floor( distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor ( distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
+  const minutes = Math.floor (distance % (1000 * 60 * 60) / (1000 * 60));
+  const seconds = Math.floor ( distance % (1000 * 60) / 1000);
+
+  document.getElementById("days").innerText = days;
+  document.getElementById("hours").innerText = hours;
+  document.getElementById("minutes").innerText = minutes;
+  document.getElementById("seconds").innerText = seconds;
+},
+
+setTimer: setInterval(function() {
+    seminarObject.timerCountDown();
+  }, 1000)
+};
+
+
+
+
 
 /*const timeElement = document.getElementById("time-left")
 
