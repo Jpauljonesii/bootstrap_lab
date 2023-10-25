@@ -77,7 +77,7 @@ countdownTimer.start();
 
 const seminarObject = {
   eventName: "Medicare Seminar",
-  eventDate: new Date("Oct 28, 2023 12:00:00").getTime(),
+  eventDate: new Date("Oct 31, 2023 12:00:00").getTime(),
 
   timerCountDown: function (){
     const now = new Date().getTime();
