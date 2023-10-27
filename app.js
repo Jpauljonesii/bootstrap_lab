@@ -104,6 +104,16 @@ setTimer: setInterval(function() {
   }, 1000)
 };
 
+function EventDetails (name, date, time, location) {
+  this.name = name;
+  this.date = date;
+  this.time = time;
+  this.location = location;
+}
+
+const medicare1 = new EventDetails ("Medicare1", "10/31/23", "12:00pm", "webex")
+const medicare2 = new EventDetails ("Medicare2", "11/7/23", "12:00pm", "webex");
+const medicare3 = new EventDetails ("Medicare3", "11/14/23", "12:00pm", "webex");
 
 
 
