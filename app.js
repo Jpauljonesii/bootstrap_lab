@@ -1,20 +1,24 @@
 'use strict';
 const forms = document.querySelectorAll('.needs-validation');
 
-Array.from(forms).forEach(form => {
-    form.addEventListener('submit', event => {
+Array.from(forms).forEach((form) => {
+  form.addEventListener(
+    'submit',
+    (event) => {
       if (!form.checkValidity()) {
-        event.preventDefault()
-        event.stopPropagation()
+        event.preventDefault();
+        event.stopPropagation();
       }
 
-      form.classList.add('was-validated')
-    }, false)
-  });
+      form.classList.add('was-validated');
+    },
+    false
+  );
+});
 
-  function submitForm(){
-    alert('Form Submitted');
-  }
+function submitForm() {
+  alert('Form Submitted');
+}
 /*
 const timeElms = {
   days: document.getElementById("days"),
@@ -71,52 +75,89 @@ const countdownTimer = {
 countdownTimer.start();
 */
 
-    
-
-
-
 const seminarObject = {
-  eventName: "Medicare Seminar",
-  eventDate: new Date("Oct 31, 2023 12:00:00").getTime(),
+  eventName: 'Medicare Seminar',
+  eventDate: new Date('Oct 31, 2023 12:00:00').getTime(),
 
-  timerCountDown: function (){
+  timerCountDown: function () {
     const now = new Date().getTime();
     const distance = this.eventDate - now;
 
     if (distance < 0) {
-    clearInterval(this.setTimer);
-    document.getElementById("timer").innerHTML = "Event has started";
-    return;
-  }
-  const days = Math.floor( distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor ( distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
-  const minutes = Math.floor (distance % (1000 * 60 * 60) / (1000 * 60));
-  const seconds = Math.floor ( distance % (1000 * 60) / 1000);
+      clearInterval(this.setTimer);
+      document.getElementById('timer').innerHTML = 'Event has started';
+      return;
+    }
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  document.getElementById("days").innerText = days;
-  document.getElementById("hours").innerText = hours;
-  document.getElementById("minutes").innerText = minutes;
-  document.getElementById("seconds").innerText = seconds;
-},
+    document.getElementById('days').innerText = days;
+    document.getElementById('hours').innerText = hours;
+    document.getElementById('minutes').innerText = minutes;
+    document.getElementById('seconds').innerText = seconds;
+  },
 
-setTimer: setInterval(function() {
+  setTimer: setInterval(function () {
     seminarObject.timerCountDown();
-  }, 1000)
+  }, 1000),
 };
 
-function EventDetails (name, date, time, location) {
+function EventDetails(name, date, time, location) {
   this.name = name;
   this.date = date;
   this.time = time;
   this.location = location;
 }
 
-const medicare1 = new EventDetails ("Medicare1", "10/31/23", "12:00pm", "webex")
-const medicare2 = new EventDetails ("Medicare2", "11/7/23", "12:00pm", "webex");
-const medicare3 = new EventDetails ("Medicare3", "11/14/23", "12:00pm", "webex");
+/*function AllEvents() {
+  this.events = [];
+}*/
+let Events = [];
 
+const medicareEvent = new EventDetails(
+  'medicareEvent',
+  '10/31/23',
+  '12:00pm',
+  'webex'
+);
+const healthEvent = new EventDetails(
+  'healthEvent',
+  '11/7/23',
+  '12:00pm',
+  'webex'
+);
+const prescriptionEvent = new EventDetails(
+  'prescriptionEvent',
+  '11/14/23',
+  '12:00pm',
+  'webex'
+);
+Events.push(healthEvent);
+Events.push(prescriptionEvent);
+Events.push(medicareEvent);
 
+const searchForm = document.getElementById('searchform');
+searchForm.addEventListener('submit', filterByType);
 
+function filterByType(e) {
+  /* let filterEvents = (type)=> {
+
+  }*/
+  e.preventDefault();
+  console.log(e);
+  let searchTerm = document.getElementById('searchbar').value;
+  console.log(searchTerm);
+  console.log(Events);
+  const filtered = Events.filter(function (element) {
+    return element.name == searchTerm;
+  });
+  console.log(filtered);
+  return filtered;
+}
 
 /*const timeElement = document.getElementById("time-left")
 
@@ -173,4 +214,4 @@ const medicare3 = new EventDetails ("Medicare3", "11/14/23", "12:00pm", "webex")
   }
   */
 
- // timerObject.start(myCallback, 5, myIntervalCallback);
+// timerObject.start(myCallback, 5, myIntervalCallback);
