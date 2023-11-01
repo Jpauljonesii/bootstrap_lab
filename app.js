@@ -77,7 +77,7 @@ countdownTimer.start();
 
 const seminarObject = {
   eventName: 'Medicare Seminar',
-  eventDate: new Date('Oct 31, 2023 12:00:00').getTime(),
+  eventDate: new Date('Nov 7, 2023 12:00:00').getTime(),
 
   timerCountDown: function () {
     const now = new Date().getTime();
@@ -118,27 +118,27 @@ function EventDetails(name, date, time, location) {
 }*/
 let Events = [];
 
-const medicareEvent = new EventDetails(
-  'medicareEvent',
+const originalMedicare = new EventDetails(
+  'originalMedicare',
   '10/31/23',
   '12:00pm',
   'webex'
 );
-const healthEvent = new EventDetails(
-  'healthEvent',
+const medicareAdvantage = new EventDetails(
+  'medicareAdvantage',
   '11/7/23',
   '12:00pm',
   'webex'
 );
-const prescriptionEvent = new EventDetails(
-  'prescriptionEvent',
+const prescriptionDrugPlans = new EventDetails(
+  'prescriptionDrugPlans',
   '11/14/23',
   '12:00pm',
   'webex'
 );
-Events.push(healthEvent);
-Events.push(prescriptionEvent);
-Events.push(medicareEvent);
+Events.push(originalMedicare)
+Events.push(medicareAdvantage);
+Events.push(prescriptionDrugPlans);
 
 const searchForm = document.getElementById('searchform');
 searchForm.addEventListener('submit', filterByType);
